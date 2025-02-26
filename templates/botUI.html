@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mental Health Chatbot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@73.6,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="whole">
+        <div class="news-container">
+            <div class="news-header">
+                <h2 style="color: black;">Mental Well-fitness Info</h2>
+            </div>
+            <div class="magazine-container">
+                <div class="magazine-screen">
+                    <iframe src="https://www.choosingtherapy.com/category/depression-medication/" width="300" height="500" style="border:none;"></iframe>
+                </div>
+                <div class="magazine-screen">
+                    <iframe src="https://www.healthline.com/mental-health/" width="300" height="500" style="border:none;"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2 style="color: black;">Mental Health Chatbot</h2>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="bot-message">
+                    <div class="bot-avatar"></div>
+                    <div class="message-content">
+                        <div class="message-bubble">
+                           <p style="font-weight: bolder;">NOTE :</p> <p style="color: crimson;"> This chatbot is specifically designed for mental health support. Feel free to use this chatbot's help to feel comfy !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="loading" style="display:none;">
+                <div class="typing-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Type your message here..." />
+                <button class="send-btn" onclick="sendMessage()">
+                    <i class="fas fa-paper-plane" style="font-size: x-small;">Send</i>
+                </button>
+                <button class="stop-btn">
+                    <i class="fas fa-stop" style="font-size: small;">Stop</i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script/script.js') }}"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+</body>
+</html>
