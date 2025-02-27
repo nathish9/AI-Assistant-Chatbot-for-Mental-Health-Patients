@@ -5,7 +5,7 @@ import json
 app = Flask(__name__)
 
 # Set your API key here
-API_KEY = "AIzaSyB8EhidgXUOdi9jLhkEV1LbSo6bA2fRQ_s"  # Replace with your actual API key
+API_KEY = "AIzaSyBvqg3WUWwf8aPVC_IXytIBpLXArG_a2Xg"  # Replace with your actual API key
 
 # Function to generate a response from the Google Gemini API
 def generate_response(user_input):

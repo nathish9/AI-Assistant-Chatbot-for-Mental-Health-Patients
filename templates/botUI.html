@@ -8,53 +8,53 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="whole">
-        <div class="news-container">
-            <div class="news-header">
-                <h2 style="color: black;">Mental Well-fitness Info</h2>
-            </div>
-            <div class="magazine-container">
-                <div class="magazine-screen">
-                    <iframe src="https://www.choosingtherapy.com/category/depression-medication/" width="300" height="500" style="border:none;"></iframe>
+    <!-- articles -->
+    <section class="article">
+        <h4 class="art_title">Read Articles</h4>
+        <div class="cards">
+            <div class="card">
+                <div class="card-image">
+                    <img src="../static/utils/healthbanner2.webp" alt="mental-health"/>
                 </div>
-                <div class="magazine-screen">
-                    <iframe src="https://www.healthline.com/mental-health/" width="300" height="500" style="border:none;"></iframe>
+                <div>
+                    <a href="https://www.healthline.com/health/anxiety/psychotherapy-for-anxiety" class="card_title">What Type of Psychotherapy Is Best for Anxiety?</a>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem atque quaerat dignissimos minus possimus eaque nesciunt dolorem necessitatibus. </p>
                 </div>
             </div>
         </div>
-        <div class="chat-container">
-            <div class="chat-header">
-                <h2 style="color: black;">Mental Health Chatbot</h2>
-            </div>
-            <div class="chat-messages" id="chat-messages">
-                <div class="bot-message">
-                    <div class="bot-avatar"></div>
-                    <div class="message-content">
-                        <div class="message-bubble">
-                           <p style="font-weight: bolder;">NOTE :</p> <p style="color: crimson;"> This chatbot is specifically designed for mental health support. Feel free to use this chatbot's help to feel comfy !</p>
-                        </div>
+    </section>
+    <!-- GPT -->
+    <section class="gpt">
+        <div class="title">
+            <h3 class="gradient-text">Mental Health Chatbot</h3>
+            <p>Your AI Companion for a Healthier Mind – Listen, Support, Empower!</p>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="bot-message">
+                <div class="bot-avatar"></div>
+                <div class="message-content">
+                    <div class="message-bubble">
+                        <p style="font-weight: bolder;">NOTE :</p>
+                        <p style="color: crimson;"> This chatbot is specifically designed for mental health support. Feel free to use this chatbot's help to feel comfy!</p>
                     </div>
                 </div>
             </div>
-            <div class="loading" style="display:none;">
-                <div class="typing-indicator">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="chat-input" placeholder="Type your message here..." />
-                <button class="send-btn" onclick="sendMessage()">
-                    <i class="fas fa-paper-plane" style="font-size: x-small;">Send</i>
-                </button>
-                <button class="stop-btn">
-                    <i class="fas fa-stop" style="font-size: small;">Stop</i>
-                </button>
+        </div>
+        <div class="loading" style="display:none;">
+            <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </div>
-    
+        <div class="prompt">
+            <form class="input-container" onsubmit="event.preventDefault(); sendMessage();">
+                <input type="text" placeholder="What's about your Health today... ?" id="chat-input"/>
+                <button type="submit">Ask</button>
+            </form>
+            
+        </div>
+    </section>
     <script src="{{ url_for('static', filename='script/script.js') }}"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
 </body>
