@@ -5,7 +5,7 @@ import json
 app = Flask(__name__)
 
 # Set your API key here
-API_KEY = "AIzaSyBvqg3WUWwf8aPVC_IXytIBpLXArG_a2Xg"  # Replace with your actual API key
+API_KEY = "AIzaSyCxEJSKDS4GZOQ2HTe7AazWbXpN8cEBwVc"  # Replace with your actual API key
 
 # Function to generate a response from the Google Gemini API
 def generate_response(user_input):
@@ -15,7 +15,7 @@ def generate_response(user_input):
     if any(greeting in normalized_input for greeting in greetings):
         return "MHBot here! Hope you are doing well! How may I help you?"
 
-    url = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=" + API_KEY
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + API_KEY
     headers = {'Content-Type': 'application/json'}
 
     data = {
@@ -51,16 +51,12 @@ def format_response(text):
     formatted_lines = []
     for line in lines:
         line = line.strip()
-        if line.startswith("*" or "1." or "2." or "3." or "4." or "5."):
-            print("\n")
-            print("\t")
+        # Fixed logical error in condition
+        if line.startswith("*") or line.startswith("1.") or line.startswith("2.") or line.startswith("3.") or line.startswith("4.") or line.startswith("5."):
             formatted_lines.append("\n" + line)
         else:
-            print("\n")
-            print("\t")
             formatted_lines.append(line)
-        formatted_lines.append("\n\n\n")  # Add an extra newline for better spacing
-    return '\n\n\n'.join(formatted_lines)
+    return '\n'.join(formatted_lines)
 
 @app.route('/')
 def index():
