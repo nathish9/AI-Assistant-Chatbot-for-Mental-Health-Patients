@@ -1,40 +1,11 @@
 let controller; // Declare a variable to hold the AbortController
 
-function sendMessage() {
-    var input = document.getElementById("chat-input");
-    var message = input.value.trim();
-    if (message !== "") {
-        appendMessage("user", message);
-        input.value = ""; // Clear input field
-
-        // Create a new AbortController instance for each request
-        controller = new AbortController();
-        const signal = controller.signal;
-
-        fetch('/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ "message": message }),
-            signal: signal // Pass the signal to the fetch request
-        })
-        .then(response => response.json())
-        .then(data => typeWriter(data.response, 50)) // Call typeWriter with response and speed
-        .catch(err => {
-            if (err.name === 'AbortError') {
-                console.log('Fetch request was aborted');
-            } else {
-                console.error('Fetch error:', err);
-            }
-        });
-    }
-}
-
 function appendMessage(sender, message) {
     var chatMessages = document.getElementById("chat-messages");
     var messageDiv = document.createElement("div");
     messageDiv.classList.add(sender === "bot" ? "bot-message" : "user-message");
+    
+    // Fixed template literal syntax with backticks
     messageDiv.innerHTML = `
         <div class="${sender}-avatar"></div>
         <div class="message-content">
@@ -52,6 +23,8 @@ function typeWriter(text, speed) {
     var chatMessages = document.getElementById("chat-messages");
     var botMessage = document.createElement("div");
     botMessage.classList.add("bot-message");
+    
+    // Fixed template literal syntax with backticks
     botMessage.innerHTML = `
         <div class="bot-avatar"></div>
         <div class="message-content">
@@ -84,14 +57,7 @@ document.getElementById('chat-input').addEventListener('keypress', function (eve
     }
 });
 
-// Add event listener for Stop button
-document.querySelector('.stop-btn').addEventListener('click', function() {
-    if (controller) {
-        controller.abort(); // Abort the ongoing fetch request
-        console.log('Chatbot response generation stopped.');
-    }
-});
-
+// Unified sendMessage function
 function sendMessage() {
     var input = document.getElementById("chat-input");
     var message = input.value.trim();
@@ -127,6 +93,8 @@ function sendMessage() {
                 console.log('Fetch request was aborted');
             } else {
                 console.error('Fetch error:', err);
+                // Add an error message to the chat
+                appendMessage("bot", "Sorry, there was an error processing your request. Please try again.");
             }
         });
     }
